@@ -63,6 +63,8 @@ AC_CONFIG_FILES([textbin/Makefile])
 AC_CONFIG_FILES([thread/Makefile])
 AC_CONFIG_FILES([types/Makefile])
 
+AC_CONFIG_FILES([readdir/Makefile])
+
 AM_CONDITIONAL(OS_IS_MAC, [test $(uname -s) = Darwin])
 
 # finally this generates the Makefiles etc. for the build
