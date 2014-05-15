@@ -85,7 +85,7 @@ int main(int argc, const char * argv[])
 	//creation du dossier pour les fichiers
     char dirName[]="temp";
     
-    int err = mkdir(dirName, S_IRUSR|S_IWUSR|S_IXUSR);
+    int err = mkdir(dirName, S_IRUSR|S_IWUSR|S_IXUSR|S_IRGRP|S_IWGRP|S_IXGRP);
     if(err==-1){
         perror("mkdir in main");
         exit(EXIT_FAILURE);
