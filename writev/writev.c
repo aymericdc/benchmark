@@ -13,6 +13,7 @@
 #include <string.h>
 #include <sys/uio.h>
 #include "benchmark.h"
+#include <stdlib.h>
 
 /*
  Fonction pour le test de write v. Elle prend en argument le nombre de fois que on ecrit le string passe en deuxiemme argument
@@ -88,4 +89,6 @@ int main()
     recorder_free(writev_rec);
     recorder_free(writelseek_rec);
 	timer_free(t);
+	
+	return EXIT_SUCCESS;
 }
