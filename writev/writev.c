@@ -135,6 +135,9 @@ int main()
     writeVBenchmark(200, buf,t,writev_rec);
     writeVBenchmark(500, buf,t,writev_rec);
     writeVBenchmark(1000, buf,t,writev_rec);
+    //writeVBenchmark(3000, buf,t,writev_rec);
+    //writeVBenchmark(5000, buf,t,writev_rec);
+    //writeVBenchmark(10000, buf,t,writev_rec);
     
     writeLseekBenchmark(1, buf,t,writelseek_rec);
     writeLseekBenchmark(10, buf,t,writelseek_rec);
@@ -143,6 +146,10 @@ int main()
     writeLseekBenchmark(200, buf,t,writelseek_rec);
     writeLseekBenchmark(500, buf,t,writelseek_rec);
     writeLseekBenchmark(1000, buf,t,writelseek_rec);
+    //writeLseekBenchmark(3000, buf,t,writelseek_rec);
+    //writeLseekBenchmark(5000, buf,t,writelseek_rec);
+    //writeLseekBenchmark(10000, buf,t,writelseek_rec);
+
     
     recorder_free(writev_rec);
     recorder_free(writelseek_rec);
