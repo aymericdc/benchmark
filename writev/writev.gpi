@@ -1,0 +1,7 @@
+set title 'Benchmark of writev'
+set xlabel 'number of string'
+set ylabel 'time [ns] per string'
+set key right bottom
+#set logscale x
+plot 'writev.csv' using 1:2 title 'file'
+
