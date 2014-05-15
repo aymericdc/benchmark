@@ -10,7 +10,19 @@
 
 #include "benchmark.h"
 
-
+/* \brief cree nFiles fichiers dans le dossier dirName et puis les parcourt avec readdir
+ *
+ * \param dirName est le nom du dossier
+ *
+ * \param nFiles est le nombre de fichiers a creer et a parcourir dans le dossier 
+ *
+ * \param t Le temps dans lequel on stocke le temps de debut
+ *
+ * \param r Sauvegarde le temps dans un fichier .csv
+ *
+ * Cree les fichiers puis le parcourt et fini par les supprimer.
+ *
+ */
 void benchmarkReaddir(char * dirName, int nFiles,timer* t, recorder* r)
 {
     int i,err;
@@ -43,6 +55,7 @@ void benchmarkReaddir(char * dirName, int nFiles,timer* t, recorder* r)
         exit(EXIT_FAILURE);
     }
     
+	
 	//lance le timer
 	start_timer(t);
     while ((dp = readdir(dirp)) != NULL) {
@@ -50,6 +63,7 @@ void benchmarkReaddir(char * dirName, int nFiles,timer* t, recorder* r)
     }
 	//on ecrit le temps moyen pour nfile fichiers, par fichier
     write_record_n(r,nFiles,stop_timer(t),nFiles);
+	
 	
 	
 	//fermeture du dossier
@@ -77,6 +91,12 @@ void benchmarkReaddir(char * dirName, int nFiles,timer* t, recorder* r)
     }	
 }
 
+
+/* \brief Enregistre les temps de calcul pour parcourir un dossiers avec readdir
+ *
+ *	Le dossier qui est cree est supprime avec le Makefile, car il en salle intel,
+ *   il y a des fichiers .nfs qui se crees et qui empechent la suppression du dossier.
+ */
 int main(int argc, const char * argv[])
 {
     timer *t = timer_alloc();
