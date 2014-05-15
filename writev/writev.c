@@ -31,7 +31,10 @@ void writeVBenchmark (int length, char* buf, timer* t, recorder* r) {
     
     //Initialisation du file descriptor
     int fd = open("writeV.txt",  O_RDWR | O_CREAT, S_IRUSR | S_IRGRP | S_IROTH);
-    
+    if(fd==-1){
+        perror("open in writeVBenchmark");
+        exit(EXIT_FAILURE);
+    }
     
     int iovcnt;
     
@@ -76,10 +79,16 @@ void writeVBenchmark (int length, char* buf, timer* t, recorder* r) {
  Fonction pour le test de write. Elle prend en argument le nombre de fois que on ecrit le string passe en deuxiemme argument
  */
 void writeLseekBenchmark (int length, char* buf, timer* t, recorder* r) {
+	
     int fd = open("writeLseek.txt",  O_RDWR | O_CREAT, S_IRUSR | S_IRGRP | S_IROTH);
+    if(fd==-1){
+        perror("open in writeLseekBenchmark");
+        exit(EXIT_FAILURE);
+    }
+
+    
     int i;
     //Debut du timer
-    
     start_timer(t);
     
     //Ecriture dans le fichier test
