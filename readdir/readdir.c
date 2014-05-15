@@ -8,9 +8,9 @@
 #include <dirent.h>
 
 
-void benmarkReaddir(char * dir, int nFiles,timer* t, recorder* r)
+void benchmarkReaddir(char * dirName, int nFiles,timer* t, recorder* r)
 {
-    int i;
+    int i,err;
     
 	//Creation des fichiers dans le dossier
     for(i = 0; i< nFiles; i++){
@@ -56,7 +56,7 @@ void benmarkReaddir(char * dir, int nFiles,timer* t, recorder* r)
     }
     
     //suppression des fichiers crees
-    for(i = 0; i<10; i++){
+    for(i = 0; i<nFiles; i++){
         
         char str[15];
         sprintf(str, "%d", i);
@@ -88,10 +88,10 @@ int main(int argc, const char * argv[])
     }
     
 	
-	benmarkReaddir(dirName,1,t,readdir_rec);
-	benmarkReaddir(dirName,10,t,readdir_rec);
-	benmarkReaddir(dirName,50,t,readdir_rec);
-	benmarkReaddir(dirName,100,t,readdir_rec);
+	benchmarkReaddir(dirName,1,t,readdir_rec);
+	benchmarkReaddir(dirName,10,t,readdir_rec);
+	benchmarkReaddir(dirName,50,t,readdir_rec);
+	benchmarkReaddir(dirName,100,t,readdir_rec);
 	
     
     err = rmdir(dirName);
