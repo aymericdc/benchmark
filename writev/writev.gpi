@@ -3,6 +3,6 @@ set xlabel 'number of string'
 set ylabel 'time [ns]'
 set key right bottom
 #set logscale x
-plot 'writev.csv' using 1:2 title 'writev',\
-     'writelseek.csv' using 1:2 title 'write and lseek'
+plot 'writev.csv' using 1:2 title 'writev' with lines,\
+     'writelseek.csv' using 1:2 title 'write and lseek' with lines
 
