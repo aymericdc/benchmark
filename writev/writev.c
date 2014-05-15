@@ -12,6 +12,7 @@
 #include <unistd.h>
 #include <string.h>
 #include <sys/uio.h>
+#include "benchmark.h"
 
 /*
  Fonction pour le test de write v. Elle prend en argument le nombre de fois que on ecrit le string passe en deuxiemme argument
@@ -50,7 +51,7 @@ void writeVBenchmark (int length, char* buf0, timer* t, recorder* r) {
 /*
  Fonction pour le test de write. Elle prend en argument le nombre de fois que on ecrit le string passe en deuxiemme argument
  */
-void writeLseekBenchmark (int length, char* buf0) {
+void writeLseekBenchmark (int length, char* buf0, timer* t, recorder* r) {
     int fd = open("writeLseek.txt",  O_RDWR | O_CREAT, S_IRUSR | S_IRGRP | S_IROTH);
     int i;
     //Debut du timer
