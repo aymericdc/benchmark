@@ -20,7 +20,7 @@ Le projet est constitué
   statiques développées pour le projet ainsi que divers scripts;
 * ainsi qu'un dossier par benchmark.
   Le résultat du benchmark est affiché dans une page `html`
-  qu'on peut obtenir en lançant `make show-html` dans le dossier correspondant.
+  qu'on peut obtenir en lançant `make show` dans le dossier correspondant.
 
 ## Documentation
 La documentation se trouve
@@ -35,7 +35,8 @@ Il suffit alors d'ouvrir `doc/html/index.html` pour voir la documentation.
 ## Compilation
 Commencez par vous assurez que vous avez les dépendances nécessaires
 
-    $ sudo apt-get install build-essential dh-autoreconf gnuplot
+    $ sudo apt-get install build-essential dh-autoreconf gnuplot libgd2-xpm-dev libtool autoconf
+    $ sudo apt-get install linux-tools-common linux-tools-generic # perf
 
 Il est nécessaire d'avoir un gnuplot récent (4.2 est trop vieux, 4.6 marche bien).
 Si vous êtes sur une des machines des salles, il vous faudra donc l'installer from source (voir plus loin).
@@ -51,13 +52,13 @@ des `Makefile.am`, exécutez
 les librairies et tous les benchmarks mais aussi un `Makefile` dans
 le dossier `lib` qui compile les librairies et un dossier dans
 chaque dossier de benchmark qui peut compiler le benchmark mais aussi
-l'exécuter et générer et afficher une page `html` à l'aide `make show-html`.
+l'exécuter et générer et afficher une page `html` à l'aide `make show`.
 
 Par exemple, pour essayer le benchmark `io`, faite suivre ce `./bootstrap.sh`
 par
 
     $ cd io
-    $ make show-html
+    $ make show
 
 ### Utiliser gnuplot from source
 
@@ -79,9 +80,9 @@ Si vous n'avez les droits root sur la machine
 et il faudra spécifier au benchmark d'utiliser votre gnuplot compilé dans `~/src/gnuplot-4.6.5/src`.
 Pour cela, faites
 
-    $ PATH=<path/to/gnuplot-4.6.5>/src:${PATH} ./bootstrap.sh
+    $ PATH=</path/to/gnuplot-4.6.5>/src:${PATH} ./bootstrap.sh
 
-à la place de `./bootstrap.sh` dans le dossier benchmark.
+à la place de `./bootstrap.sh` dans le dossier benchmark (le chemin vers gnuplot doit être un chemin absolu (qui commence par `/`)).
 
 Si vous avez les droits root, faites simplement
 
