@@ -55,6 +55,7 @@ void writeLseekBenchmark (int length, char* buf0, timer* t, recorder* r) {
     int fd = open("writeLseek.txt",  O_RDWR | O_CREAT, S_IRUSR | S_IRGRP | S_IROTH);
     int i;
     //Debut du timer
+    
 	start_timer(t);
     
     for (i=0; i<length; i++) {
